@@ -9,6 +9,7 @@ import { AddCategoryComponent } from './features/category/add-category/add-categ
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UpdateCategoryComponent } from './features/category/update-category/update-category.component';
+import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UpdateCategoryComponent } from './features/category/update-category/upd
     NavbarComponent,
     CategoryListComponent,
     AddCategoryComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
