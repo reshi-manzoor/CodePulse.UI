@@ -1,8 +1,8 @@
 
 export interface BlogPost
-{
+{     id:string;
      title:String;
-     shortdescription: String;
+     shortdescription: String;     
      content:String;
      urlhandle:String;
       publisheddate:Date;
