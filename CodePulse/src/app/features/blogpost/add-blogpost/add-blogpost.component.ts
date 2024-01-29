@@ -18,7 +18,7 @@ export class AddBlogpostComponent
         this.model=
         {
            title:'',
-           shortdescription:'',
+           shortDescription:'',
            content:'',
            urlhandle:'',
            featuredimageurl:'',

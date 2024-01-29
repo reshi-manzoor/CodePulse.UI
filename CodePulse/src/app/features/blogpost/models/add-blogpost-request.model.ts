@@ -1,7 +1,7 @@
 export interface AddBlogpostRequest
 {
   title:String;
-    shortdescription: String;   
+  shortDescription: String;   
     content:String;
     urlhandle:String;
      publisheddate:Date;

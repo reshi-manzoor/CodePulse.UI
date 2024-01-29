@@ -15,8 +15,8 @@
             <label  class="form-label">
                 short description
             </label>
-            <input type="text" id="shortdescription"  class="form-control"
-             name="shortdescription" [(ngModel)]="model.shortdescription" >
+            <input type="text" id="ShortDescription"  class="form-control"
+             name="ShortDescription" [(ngModel)]="model.shortDescription" >
         </div>
       </div>
 
@@ -47,7 +47,7 @@
             <label  class="form-label">
                 featured imageurl
             </label>
-            <ng-container  *ngif="model.featuredimageurl !==''" >
+            <ng-container  *ngIf="model.featuredimageurl !==''" >
               <div>
                 <img  [src]="model.featuredimageurl" height="100" class="my-2" > 
               </div>

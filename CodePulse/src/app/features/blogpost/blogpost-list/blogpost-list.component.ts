@@ -13,7 +13,11 @@ export class BlogpostListComponent implements OnInit {
    blogposts$ ?: Observable<BlogPost[]>;
   constructor(private blogpostservice:BlogpostService) { }
   ngOnInit(): void {
-    
+       
         this.blogposts$ = this.blogpostservice.getallblogposts();
+        this.blogposts$.subscribe( data =>
+          {
+             console.log(data);
+          });
   }
 }
