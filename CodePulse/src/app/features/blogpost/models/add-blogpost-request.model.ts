@@ -7,5 +7,6 @@ export interface AddBlogpostRequest
      publisheddate:Date;
      author:String;
      isvisible:boolean;
-     featuredimageurl:String;     
+     featuredimageurl:String;
+     categories:String[];     
 }

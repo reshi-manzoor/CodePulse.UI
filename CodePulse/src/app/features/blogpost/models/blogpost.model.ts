@@ -1,3 +1,4 @@
+import { Category } from "../../category/models/category.model";
 
 export interface BlogPost
 {     id:string;
@@ -8,6 +9,7 @@ export interface BlogPost
       publisheddate:Date;
       author:String;
       isvisible:boolean;
-      featuredimageurl:String;         
+      featuredimageurl:String; 
+      categories:Category[];        
         
 }

@@ -93,6 +93,18 @@
             isvisible
         </label>
       </div>
+      <div>
+        <label  class="form-label">  Categories  </label>
+        <ng-container *ngIf="categories$ |  async as categories" >
+        
+          <select class="form-control" id="categories" [(ngModel)]="model.categories" multiple name="categories">
+            <option *ngFor="let category of categories"  [value]="category.id">
+              {{category.name}}
+            </option>
+          </select>
+        
+        </ng-container>
+      </div>
     </div>
         <div class="mt-2">
         <div class="mt-3">
