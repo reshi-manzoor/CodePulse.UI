@@ -16,8 +16,10 @@ export class AddBlogpostComponent implements OnInit
 {   
      model:AddBlogpostRequest; 
      categories$ ?: Observable<Category[]>;     
-      constructor(private blogpostservice:BlogpostService,
-        private route:Router ,private categoryservice:CategoryService) 
+      constructor(
+        private blogpostservice:BlogpostService,
+        private route:Router ,
+        private categoryservice:CategoryService) 
         {
         this.model=
         {

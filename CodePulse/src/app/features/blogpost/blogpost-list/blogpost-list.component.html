@@ -1,43 +1,47 @@
 <div class="container">
     <h1 class="mt-3">Add Blog Post Here</h1>
-    
+
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary"> Add BlogPost</a>
     </div>
 
-    <ng-container *ngIf=" blogposts$  | async as blogposts " >
+    <ng-container *ngIf=" blogposts$  | async as blogposts ">
 
-       <table class="table table-bordered mt-3">
-       
-         <thead>
-             <tr>
-                <th> Title  </th>
-                <th> Short Description  </th>
-               
-                 <th> Is Visible</th>
-                 <th>Categories</th>
-                 
-             </tr>
+        <table class="table table-bordered mt-3">
+
+            <thead>
+                <tr>
+                    <th> Title </th>
+                    <th> Short Description </th>
+
+                    <th> Is Visible</th>
+                    <th>Categories</th>
+                    <th> </th>
+
+                </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let blogpost of blogposts">
-                
-                    <td>{{ blogpost.title }}</td>
-                    <td>{{ blogpost.shortDescription }}</td>                   
-                    <td>{{ blogpost.isvisible }}</td>
 
-                    <span  class="badge bg-secondary me-2" >
-                        <span *ngFor="let cateory of blogpost.categories">
-                          {{cateory.name}}
+                    <td>{{ blogpost.title }}</td>
+                    <td>{{ blogpost.shortDescription }}</td>
+                    <td>{{ blogpost.isvisible }}</td>
+                    <td>
+                        <span class="badge bg-secondary me-2">
+                            <span *ngFor="let cateory of blogpost.categories">
+                                {{cateory.name}}
+                            </span>
                         </span>
-                    </span>
-                  
+                    </td>
+
+                    <td class="btn btn-light"> <a [routerLink]="['/admin/blopost',blogpost.id]"> Edit </a>
+                    </td>
                 </tr>
             </tbody>
-         
-       </table>
 
-        
+        </table>
+
+
 
     </ng-container>
 </div>

@@ -12,6 +12,7 @@ import { UpdateCategoryComponent } from './features/category/update-category/upd
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
 import { AddBlogpostComponent } from './features/blogpost/add-blogpost/add-blogpost.component';
 import { BlogpostListComponent } from './features/blogpost/blogpost-list/blogpost-list.component';
+import { EditBlogpostComponent } from './features/blogpost/edit-blogpost/edit-blogpost.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BlogpostListComponent } from './features/blogpost/blogpost-list/blogpos
     UpdateCategoryComponent,
     EditCategoryComponent,
     AddBlogpostComponent,
-    BlogpostListComponent
+    BlogpostListComponent,
+    EditBlogpostComponent
   ],
   imports: [
     BrowserModule,
