@@ -56,7 +56,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
   onSubmitForm() :void
   {    
       if (this.model && this.id)
-      {
+      {  console.log(this.model ,"guid of the post",this.id);
         var  editcategoryrequest : UpdateBlogpostRequest=          
        {        
             title:this.model.title,
@@ -74,15 +74,15 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
               next:(response) =>
               {
                  console.log(response);
-                   this.route.navigateByUrl('/admin/blogpost');
+                   this.route.navigateByUrl('/admin/blogposts');
               }
             });
       }
       
   }
   ngOnDestroy(): void {
-    this.routersubscription?.unsubscribe;
-    this.blogpostsubscription ?.unsubscribe;
-    this.getblockpostsubscription ?.unsubscribe;
+    this.routersubscription?.unsubscribe();
+    this.blogpostsubscription ?.unsubscribe();
+    this.getblockpostsubscription ?.unsubscribe();
   }
 }
