@@ -26,7 +26,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
   constructor(private activatedroute:ActivatedRoute,
     private blogpostservice:BlogpostService,
     private categoryservice:CategoryService,
-    private route:Router
+    private router:Router
     )
      { }
  
@@ -44,6 +44,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
              next:(response) =>
              {
                this.model=response;
+               console.log(this.model);
                this.selectcategories=response.categories.map(x => x.id);
              }
           })
@@ -63,9 +64,9 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
             author:this.model.author,
             shortDescription:this.model.shortDescription,
             content:this.model.content,
-            publisheddate:this.model.publisheddate,
-            urlhandle:this.model.urlhandle,
-            featuredimageurl:this.model.featuredimageurl,
+            publisheddate:this.model.publishedDate,
+            urlhandle:this.model.urlHandle,
+            featuredimageurl:this.model.featuredImageurl,
             isvisible:this.model.isvisible,
             categories:this.selectcategories ?? []
        };
@@ -74,12 +75,29 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
               next:(response) =>
               {
                  console.log(response);
-                   this.route.navigateByUrl('/admin/blogposts');
+                   this.router.navigateByUrl('/admin/blogposts');
               }
             });
-      }
+      }     
+     
+    }
+
+    // delete blogpost here
+    deleteRecord(): void
+    {
+          if(this.id)
+          {
+            this.blogpostservice.deleteblogpost(this.id)
+            .subscribe({
+              next:(response) =>
+              {
+                 this.router.navigateByUrl('/admin/blogposts')
+              }
+            });
+          } 
       
-  }
+      }
+
   ngOnDestroy(): void {
     this.routersubscription?.unsubscribe();
     this.blogpostsubscription ?.unsubscribe();

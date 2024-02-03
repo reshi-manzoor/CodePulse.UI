@@ -40,7 +40,7 @@
                  url handle
              </label>
              <input type="text" id="urlhandle"  class="form-control"
-              name="urlhandle" [(ngModel)]="model.urlhandle" >
+              name="urlhandle" [(ngModel)]="model.urlHandle" >
          </div>
        </div>
  
@@ -49,14 +49,14 @@
              <label  class="form-label">
                  featured imageurl
              </label>
-             <ng-container  *ngIf="model.featuredimageurl !==''" >
+             <ng-container  *ngIf="model.featuredImageurl !==''" >
                <div>
-                 <img  [src]="model.featuredimageurl" height="100" class="my-2" > 
+                 <img  [src]="model.featuredImageurl" height="100" class="my-2" > 
                </div>
               
              </ng-container>
              <input type="text" id="featuredimageurl"  class="form-control"
-              name="featuredimageurl" [(ngModel)]="model.featuredimageurl" >
+              name="featuredimageurl" [(ngModel)]="model.featuredImageurl" >
          </div>
        </div>
  
@@ -67,9 +67,9 @@
              </label>
              <input type="date" id="publisheddate"  class="form-control"
               name="publisheddate" 
-              value="{{model.publisheddate}}"
-              [(ngModel)]="model.publisheddate "
-              (ngModelChange)="model.publisheddate=$event">
+              value="{{model.publishedDate}}"
+              [(ngModel)]="model.publishedDate "
+              (ngModelChange)="model.publishedDate=$event">
          </div>
        </div>
  
@@ -108,7 +108,9 @@
      </div>
          <div class="mt-2">
          <div class="mt-3">
-             <button class="btn btn-primary" type="submit">Save</button>
+             <button class="btn btn-primary" type="submit">Save changes</button>
+
+          <button type="button" (click)="deleteRecord()" class="btn btn-danger ms-3">Delete Post</button>
          </div>
        </div>
      </form>

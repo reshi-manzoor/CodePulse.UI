@@ -5,11 +5,11 @@ export interface BlogPost
      title:String;
      shortDescription: String;     
      content:String;
-     urlhandle:String;
-      publisheddate:Date;
+     urlHandle:String;
+      publishedDate:Date;
       author:String;
       isvisible:boolean;
-      featuredimageurl:String; 
+      featuredImageurl:String; 
       categories:Category[];        
         
 }
