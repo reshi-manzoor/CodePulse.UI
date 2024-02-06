@@ -11,15 +11,16 @@
                 <h5>Upload</h5>
               <form>
                 <div class="mt-3">
-                    <input type="file" name="file" id="file" class="form-control">
+                    <input type="file" name="file" id="file"
+                     class="form-control"  (change)="onFileUploadChange($event)"  >
                 </div>
                <div class="mt-3">
                 <input type="text" name="filename" id="filename"
-                 class="form-control" placeholder="File Name" >
+                 class="form-control" placeholder="File Name" [(ngModel)]="FileName" >
                </div>
                <div class="mt-3">
                 <input type="text" name="title" id="title"
-                 class="form-control" placeholder="File title" >
+                 class="form-control" placeholder="File title"  [(ngModel)]="Title" >
                </div>
                <div class="mt-3">
                 <button type="submit"  class="btn btn-primary" >Upload</button>

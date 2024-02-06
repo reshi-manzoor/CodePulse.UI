@@ -14,15 +14,19 @@ import { UpdateBlogpostRequest } from '../models/update-blogpost-request.model';
   styleUrls: ['./edit-blogpost.component.css']
 })
 export class EditBlogpostComponent implements OnInit ,OnDestroy {
-  id:string | null=null;
-  
+  id:string | null=null;  
   model ?: BlogPost;
   selectcategories ?: String[];
+  isImageSelectorVisible : boolean = false;
+
+
+
   categories$ ?: Observable<Category[]>;
   routersubscription ?: Subscription;
   blogpostsubscription ?: Subscription;
   getblockpostsubscription ?: Subscription;
 
+  
   constructor(private activatedroute:ActivatedRoute,
     private blogpostservice:BlogpostService,
     private categoryservice:CategoryService,
@@ -44,7 +48,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
              next:(response) =>
              {
                this.model=response;
-               console.log(this.model);
+             //  console.log(this.model);
                this.selectcategories=response.categories.map(x => x.id);
              }
           })
@@ -57,7 +61,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
   onSubmitForm() :void
   {    
       if (this.model && this.id)
-      {  console.log(this.model ,"guid of the post",this.id);
+      { // console.log(this.model ,"guid of the post",this.id);
         var  editcategoryrequest : UpdateBlogpostRequest=          
        {        
             title:this.model.title,
@@ -74,7 +78,7 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
           .subscribe({
               next:(response) =>
               {
-                 console.log(response);
+                // console.log(response);
                    this.router.navigateByUrl('/admin/blogposts');
               }
             });
@@ -97,7 +101,18 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
           } 
       
       }
-
+   // modal on function
+   openImageSelector():void
+   {
+    // console.log(this.isImageSelectorVisible);
+       this.isImageSelectorVisible =true;
+     //  console.log(this.isImageSelectorVisible);
+   }
+   // close the modal
+   closeModal() : void
+   {
+     this.isImageSelectorVisible=false;
+   }
   ngOnDestroy(): void {
     this.routersubscription?.unsubscribe();
     this.blogpostsubscription ?.unsubscribe();
