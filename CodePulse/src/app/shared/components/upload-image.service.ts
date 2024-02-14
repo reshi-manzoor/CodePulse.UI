@@ -1,13 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AddImageModal } from './models/add-image.model';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadImageService  {
+ selectedImage:BehaviorSubject<AddImageModal>=new BehaviorSubject<AddImageModal>
+ ({
+     id:'',
+     Title:'',
+     url:'',
+     FileExtension:'',
+     FileName:''
+ });
+
 
   constructor(private http:HttpClient)  { }
   
@@ -25,4 +35,14 @@ export class UploadImageService  {
        
        return this.http.post<AddImageModal>(`${environment.apiBaseUrl}/api/Images`,form);
   }
+
+   selectImage(image:AddImageModal) : void
+   {
+      this.selectedImage.next(image);
+   }
+
+   onSelectedImage(): Observable<AddImageModal>
+   {
+     return this.selectedImage.asObservable();
+   }
 }

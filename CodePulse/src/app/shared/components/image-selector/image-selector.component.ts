@@ -48,4 +48,9 @@ export class ImageSelectorComponent implements OnInit {
   {
       this.images$ = this.imageservice.getallimages();
   }
+
+   selectImage(image:AddImageModal) :void
+  {
+      this.imageservice.selectImage(image);
+  }
 }

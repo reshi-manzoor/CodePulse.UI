@@ -7,6 +7,7 @@ import { Category } from '../../category/models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { AddBlogpostRequest } from '../models/add-blogpost-request.model';
 import { UpdateBlogpostRequest } from '../models/update-blogpost-request.model';
+import { UploadImageService } from 'src/app/shared/components/upload-image.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -20,17 +21,18 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
   isImageSelectorVisible : boolean = false;
 
 
-
   categories$ ?: Observable<Category[]>;
   routersubscription ?: Subscription;
   blogpostsubscription ?: Subscription;
   getblockpostsubscription ?: Subscription;
+  imagesubscription ?: Subscription;
 
   
   constructor(private activatedroute:ActivatedRoute,
     private blogpostservice:BlogpostService,
     private categoryservice:CategoryService,
-    private router:Router
+    private router:Router,
+    private imageservice:UploadImageService
     )
      { }
  
@@ -55,8 +57,18 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
          }
         
         }
-      }
-    );
+      });
+    this.imagesubscription=this.imageservice.onSelectedImage()
+       .subscribe({
+        next:(response) =>
+         {
+          if (this.model)
+           {
+               this.model.featuredImageurl=response.url;
+               this.isImageSelectorVisible=false;
+           }
+          }
+       });
   }
   onSubmitForm() :void
   {    
@@ -117,5 +129,6 @@ export class EditBlogpostComponent implements OnInit ,OnDestroy {
     this.routersubscription?.unsubscribe();
     this.blogpostsubscription ?.unsubscribe();
     this.getblockpostsubscription ?.unsubscribe();
+    this.imagesubscription ?.unsubscribe();
   }
 }

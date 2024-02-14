@@ -10,7 +10,9 @@
 
                     <div  *ngFor="let image of images"
                     style="min-width :100px;justify-content: center;cursor: pointer;"                    
-                    class="me-1 bg-white d-flex align-items-center flex-column border p-3" >
+                    class="me-1 bg-white d-flex align-items-center flex-column border p-3"
+                    (click)="selectImage(image)"
+                    >
 
                     <img [src]="image.url" [title]="image.Title" style="height: 150px;width: 150px;">
                     <span class="mt-1">{{image.Title}}</span>
@@ -22,10 +24,6 @@
               </ng-container>
 
             </div>
-
-
-
-
 
             <div class="col-4 p-4 bg-light">
                 <h5>Upload</h5>
