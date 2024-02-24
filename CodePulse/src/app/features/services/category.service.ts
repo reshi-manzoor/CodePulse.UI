@@ -15,7 +15,7 @@ export class CategoryService {
 
   addcategory(model:AddCategoryRequest) : Observable<void>
   {
-    return this.http.post<void>(`${environment.apiBaseUrl}/api/Categories`,model);
+    return this.http.post<void>(`${environment.apiBaseUrl}/api/Categories?addAuth=true`,model);
   }
 
   getAllCategories() : Observable<Category[]>
@@ -28,10 +28,10 @@ export class CategoryService {
   }
   editcategory(id:string,model:EditCategoryRequest):Observable<void>
   {
-        return this.http.put<void>(`${environment.apiBaseUrl}/api/Categories/${id}`,model);
+        return this.http.put<void>(`${environment.apiBaseUrl}/api/Categories/${id}?addAuth=true`,model);
   }
   deletecategory(id:String) : Observable<Category>
   {
-      return this.http.delete<Category>(`${environment.apiBaseUrl}/api/Categories/${id}`);
+      return this.http.delete<Category>(`${environment.apiBaseUrl}/api/Categories/${id}?addAuth=true`);
   }
 }
